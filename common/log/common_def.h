@@ -17,11 +17,11 @@
 * @Author: wangxiaobo
 * @Date:   2015-02-10 18:01:29
 * @Last Modified by:   wangxiaobo
-* @Last Modified time: 2015-02-10 19:37:53
+* @Last Modified time: 2015-02-12 17:26:26
 */
 
-#ifndef PB_LOG_COMMON_DEF_H
-#define PB_LOG_COMMON_DEF_H
+#ifndef PB_LOG_COMMON_DEF_H_
+#define PB_LOG_COMMON_DEF_H_
 
 #include <string>
 #include <initializer_list>
@@ -33,7 +33,7 @@
 // kernel HZ uncomment to use it instead of the regular (and slower) clock
 
 //#ifdef __linux__
-//#define SPDLOG_CLOCK_COARSE
+//#define PB_LOG_CLOCK_COARSE
 //#endif
 
 namespace pb
@@ -82,7 +82,7 @@ enum class AsyncOverflowPolicy
 //
 // log exception
 //
-class LogException : public std::exception
+class SimpleException : public std::exception
 {
 public:
     explicit LogException(const std::string& msg) : msg_(msg) {}
@@ -94,4 +94,4 @@ private:
     std::string msg_;
 };
 } // ns pb
-#endif // PB_LOG_COMMON_DEF_H
+#endif // PB_LOG_COMMON_DEF_H_
