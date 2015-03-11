@@ -17,7 +17,7 @@
 * @Author: wangxiaobo
 * @Date:   2015-02-10 18:01:29
 * @Last Modified by:   wangxiaobo
-* @Last Modified time: 2015-02-12 17:26:26
+* @Last Modified time: 2015-03-10 17:36:34
 */
 
 #ifndef PB_LOG_COMMON_DEF_H_
@@ -27,6 +27,13 @@
 #include <initializer_list>
 #include <chrono>
 #include <memory>
+
+//visual studio does not support noexcept yet
+#ifndef _MSC_VER
+#define PB_NOEXCEPT noexcept
+#else
+#define PB_NOEXCEPT throw()
+#endif
 
 // under linux, you can use the much faster CLOCK_REALTIME_COARSE clock.
 // this clock is less accurate - can be off by few millis - depending on the
@@ -40,14 +47,11 @@ namespace pb
 {
 // forward declarations
 class formatter;
-namespace sinks
-{
-class sink;
-} // ns sinks
+class Sink;
 
 // common types across the library
 using log_clock = std::chrono::system_clock;
-using sink_ptr = std::shared_ptr<sinks::sink>;
+using sink_ptr = std::shared_ptr<sinks::Sink>;
 using sinks_init_list = std::initializer_list<sink_ptr>;
 using formatter_ptr = std::shared_ptr<formatter>;
 

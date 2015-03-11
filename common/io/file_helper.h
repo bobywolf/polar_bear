@@ -17,7 +17,7 @@
 * @Author: wangxiaobo
 * @Date:   2015-02-12 17:21:45
 * @Last Modified by:   wangxiaobo
-* @Last Modified time: 2015-02-12 19:17:00
+* @Last Modified time: 2015-03-10 17:00:09
 */
 
 #ifndef PB_IO_FILE_HELPER_H_
@@ -128,6 +128,6 @@ private:
     std::string filename_;
     bool force_flush_;
 };
-}
+} // ns pb
 
 #endif // PB_IO_FILE_HELPER_H_
